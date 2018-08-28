@@ -16,7 +16,7 @@
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="message">Message:</label>
                     <div class="col-sm-10"> 
-                      <textarea type="text" class="form-control" name="message" id="message" placeholder="Enter message"></textarea>
+                      <textarea type="text" rows="8" class="form-control" name="message" id="message" placeholder="Enter message"></textarea>
                     </div>
                   </div>
                   <div class="form-group">

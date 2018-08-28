@@ -10,6 +10,12 @@ if($cur_tab=='users'){
 if($cur_tab=='projects'){
   $cur_tab_link="p_".$cur_tab_link;
 }
+if($cur_tab=='newsfeed'){
+  $cur_tab_link="nf_".$cur_tab_link;
+}
+if($cur_tab=='notificaiton'){
+  $cur_tab_link="no_".$cur_tab_link;
+}
 
 ?>  
 
@@ -102,7 +108,7 @@ if($cur_tab=='projects'){
              </ul>
         </li>
 
-        <li id="" class="treeview banks">
+        <li id="" class="treeview newsfeed">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>Newsfeed</span>
               <span class="pull-right-container">
@@ -110,11 +116,11 @@ if($cur_tab=='projects'){
               </span>
             </a>
             <ul class="treeview-menu">
-              <li id="b_index" class=""><a href="<?= base_url('admin/newsfeed/create'); ?>"><i class="fa fa-circle-o"></i>Send newsfeed</a></li>
+              <li id="nf_create" class=""><a href="<?= base_url('admin/newsfeed/create'); ?>"><i class="fa fa-circle-o"></i>Send newsfeed</a></li>
              </ul>
         </li>
 
-         <li id="" class="treeview banks">
+         <li id="" class="treeview notification">
             <a href="#">
               <i class="fa fa-dashboard"></i> <span>Notification</span>
               <span class="pull-right-container">
@@ -122,7 +128,7 @@ if($cur_tab=='projects'){
               </span>
             </a>
             <ul class="treeview-menu">
-              <li id="b_index" class=""><a href="<?= base_url('admin/notification/create'); ?>"><i class="fa fa-circle-o"></i>Send notification</a></li>
+              <li id="no_create" class=""><a href="<?= base_url('admin/notification/create'); ?>"><i class="fa fa-circle-o"></i>Send notification</a></li>
              </ul>
         </li>
 

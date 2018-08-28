@@ -46,7 +46,7 @@
 				    		$this->session->set_flashdata('error_msg',"Message not send! Pleas try again");
 				    }
 				}
-				redirect('admin/newsfeed/create');
+				redirect('admin/notification/create');
 			}
 
 			$data['userRoles']=  $this->UserRolesModel->get_all();

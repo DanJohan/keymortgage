@@ -6,7 +6,7 @@
         <!-- /.box-header -->
         <!-- form start -->
         <div class="box-body my-form-body">
-              <form id="newsfeed_form" class="form-horizontal" method="post" action="<?php echo base_url()?>admin/notification/create" enctype="multipart/form-data">
+              <form id="notification_form" class="form-horizontal" method="post" action="<?php echo base_url()?>admin/notification/create">
 
                   <div class="form-group">
                     <label class="control-label col-sm-2" for="message">Message:</label>
@@ -45,14 +45,14 @@
 </section> 
 <script type="text/javascript" src="<?php echo base_url(); ?>public/dist/js/jquery.validate.min.js"></script>
 <script type="text/javascript">
-  $( "#newsfeed_form" ).validate({
+  $( "#notification_form" ).validate({
+    debug:true,
     errorClass: "error",
     rules: {
-      title: {
-        required: true
-      },
       message:{
-        required: true
+        required: true,
+        min:50,
+        max:200
       },
       send_to:{
         required:true
