@@ -25,7 +25,7 @@
                 <td><?php echo $user['first_name']; ?></td>
             </tr>
 			 <tr>
-                <td><b>First Name</b></td>
+                <td><b>Last Name</b></td>
                 <td><?php echo $user['last_name']; ?></td>
             </tr>
              <tr>

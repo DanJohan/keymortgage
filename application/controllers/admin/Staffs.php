@@ -1,7 +1,7 @@
 <?php
 	defined('BASEPATH') OR exit('No direct script access allowed');
 
-	class Users extends MY_Controller {
+	class Staffs extends MY_Controller {
 
 		public function __construct(){
 			parent::__construct();
@@ -11,7 +11,8 @@
 			$this->load->model('DocumentModel');
 			$this->load->model('NotificationModel');
 			$this->load->helper('api');
-		    $this->load->model('UserRolesModel');
+			$this->load->model('UserRolesModel');
+		    $this->load->model('StaffEnquiryModel');
 
 			if (!$this->session->userdata['is_admin_login'] == TRUE)
 			{
@@ -20,20 +21,18 @@
 		}
  
 		public function index(){
-			$data['pageTitle']= "Users";
-			//$data['all_users'] =  $this->UserModel->get_all(NULL,array('id','desc'));
-
-			$data['all_users'] =  $this->UserModel->getAllUsers();
-        // echo $this->db->last_query();die;
-			//$this->db->where(array('user_role !='=>0));
-			$data['view'] = 'admin/users/user_list';
+			$data['pageTitle']= "Staffs";
+			$data['all_staff'] =  $this->UserModel->getStaffs(NULL,array('id','desc'));
+			$this->db->last_query();
+			//dd($data['all_staff']);
+			$data['view'] = 'admin/staffs/staff_list';
 			$this->load->view('admin/layout', $data);
 		}
 	
 		public function edit($id = null){
-				$data['pageTitle']= "Edit User";
+				$data['pageTitle']= "Edit staff";
 			if(!$id){
-				redirect('admin/users');
+				redirect('admin/staff');
 			}
 
 			if($this->input->post('submit')){
@@ -43,7 +42,7 @@
 				
 				if ($this->form_validation->run() == FALSE) {
 					$data['user'] = $this->UserModel->get(array('id'=>$id));
-					$data['view'] = 'admin/users/user_edit';
+					$data['view'] = 'admin/staffs/staff_edit';
 					$this->load->view('admin/layout', $data);
 				}
 				else{
@@ -72,7 +71,7 @@
 					);
 					$result = $this->UserModel->update($data, array('id'=>$id));
 					$this->session->set_flashdata('msg', 'User updated Successfully!');          
-                	redirect(base_url('admin/users'));
+                	redirect(base_url('admin/staffs'));
                
 				}
 			}
@@ -84,20 +83,15 @@
 		}
 
 
-	public function add(){
+	/*public function add(){
 			   $data['userRoles']=  $this->UserRolesModel->get_all();
-//print_r($data['userType']);
 			if ($this->input->post('addUser')) { 
 			$this->form_validation->set_rules('name', 'User name', 'trim|required');	
 			$this->form_validation->set_rules('email', 'Email', 'required|trim|xss_clean|is_unique[users.email]');
 			$this->form_validation->set_rules('password', 'Password', 'required|min_length[8]|max_length[12]');
 			$this->form_validation->set_rules('role_name', 'User Roles', 'trim|required');
 
-			// $this->form_validation->set_rules('password', 'Password', 'required|matches[passconf]|min_length[8]|alpha_numeric');	
-			
-				
-				
-				if ($this->form_validation->run() == FALSE) {
+			if ($this->form_validation->run() == FALSE) {
 					$data['pageTitle'] = 'Add User';
 					$data['view'] = 'admin/users/user_add';
 					$this->load->view('admin/layout', $data);
@@ -141,19 +135,22 @@
 		$this->load->view('admin/layout', $data);	
 
 		}	
-		
+		*/
 	public function detail($id=0){
 			
 			$data=array();
 			$criteria['field'] = 'id,name,first_name,last_name,email,profile_image,phone';
 			$criteria['conditions'] = array('id'=>$id);
 			$criteria['returnType'] = 'single';
-			$data['user'] =  $this->UserModel->search($criteria);
+			$data['staff'] =  $this->UserModel->search($criteria);
+			//dd($data['sfaff']);
 			$data['usersProject'] = $this->UserProjectModel->getProjectByUserId($id);
 			$data['usersBank'] = $this->UserBankModel->getBankByUserId($id);
 			$data['usersDoc'] = $this->DocumentModel->getUserDocumentById($id);
+
 			//dd($data['usersDoc']);die;
-			$data['view'] = 'admin/users/user_detail';
+			$data['pageTitle']= "Staff Profile";
+			$data['view'] = 'admin/staffs/staff_detail';
 			$this->load->view('admin/layout',$data);
 		}
 			
@@ -171,7 +168,7 @@
 				$notification_data = array(
 					'user_id'=>$user_id,
 					'text' =>$message,
-					'type'=>'Document pending',
+					'type'=>'admin',
 					'created_at'=>date("Y-m-d H:i:s")
 				);
 				$this->NotificationModel->insert($notification_data);
@@ -192,11 +189,67 @@
      
 			$this->session->set_flashdata('success_msg', 'Message send successfully!');
 			
-			redirect('admin/users/detail/'.$user_id);
+			redirect('admin/staffs/detail/'.$user_id);
 	
 	}
 
 //Push notification end
+
+// Send document method start
+
+
+public function sendDocument() {
+		//dd($_FILES,false);
+		//dd($_POST);	
+	if ($this->input->post('Submit')) {
+//print_r($_POST);die;
+			$user_id = $this->input->post('user_id');
+				$files_data = array();
+				$file_not_uploaded = array();
+
+				if(isset($_FILES['document_image']) && !empty($_FILES['document_image']['name'])){
+					$filesCount = count($_FILES['document_image']['name']);
+					for($i = 0; $i < $filesCount; $i++){
+						$_FILES['file']['name']     = $_FILES['document_image']['name'][$i];
+						$_FILES['file']['type']     = $_FILES['document_image']['type'][$i];
+						$_FILES['file']['tmp_name'] = $_FILES['document_image']['tmp_name'][$i];
+						$_FILES['file']['error']     = $_FILES['document_image']['error'][$i];
+						$_FILES['file']['size']     = $_FILES['document_image']['size'][$i];
+
+						$url = FCPATH.'uploads/admin/';
+						$config['allowed_types']='*';
+						$upload = $this->do_upload('file',$url,$config);
+					   	dd($upload,false);
+						if(isset($upload['upload_data'])){
+							chmod($upload['upload_data']['full_path'], 0777);
+							$files_data[$i] = $upload['upload_data']['file_name'];
+						}else{
+							$file_not_uploaded[$i]['file'] =  $_FILES['file']['name'] ;
+							$file_not_uploaded[$i]['error'] =  strip_tags($upload['error']) ;
+						}
+					}
+				}
+				$insert_data= array(
+					'user_id'=>$user_id,
+					'document_image'=>(!empty($files_data))?json_encode($files_data):'',
+					'message'=>$this->input->post('message'),
+					'created_at'=>date('Y-m-d H:i:s')
+				);
+				$this->StaffEnquiryModel->insert($insert_data);   
+
+			
+			
+			redirect('admin/staffs/detail/'.$user_id);
+	
+	}
+
+}
+	
+//Send document method end 
+
+
+
+
 
 			
 	public function del($id = null){

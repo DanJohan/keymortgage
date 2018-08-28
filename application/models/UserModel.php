@@ -49,4 +49,33 @@ class UserModel extends MY_Model {
 		return (!empty($result))? $result :false;
 	}
 
+	public function getStaffs()
+	{
+	$this->db->select('id,email,name,first_name,last_name,phone,profile_image,created_at,user_role,role_name');
+	//$this->db->where(array('email'=>$email));
+	$this->db->from($this->table);
+	$this->db->join('user_roles', 'user_roles.role_id = users.user_role');
+	$this->db->where(array('user_role !='=>0));
+	//$this->db->where_in('user_role', array('1','2','3'));
+
+	$query = $this->db->get();
+	$result = $query->result_array();
+	return (!empty($result))? $result : false;	
+
+	}
+
+
+	public function getAllUsers()
+	{
+	$this->db->select('id,email,name,first_name,last_name,phone,profile_image,created_at,user_role');
+	//$this->db->where(array('email'=>$email));
+	$this->db->from($this->table);
+	$this->db->where(array('user_role ='=>0));
+	//$this->db->where_in('user_role', array('1','2','3'));
+	$query = $this->db->get();
+	$result = $query->result_array();
+	return (!empty($result))? $result : false;	
+
+	}
+
 }
