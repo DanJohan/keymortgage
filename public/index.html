@@ -1,0 +1,74 @@
+<!DOCTYPE HTML>
+<!--
+	Author Olivia Hoback
+	www.olivia.nu
+-->
+<html>
+<head>
+<title>Fancybox Demo</title>
+
+<!-- Add jQuery basic library -->
+<script type="text/javascript" src="jquery-lib.js"></script>
+		
+<!-- Add required fancyBox files -->
+<link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+<script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+
+<!-- Optional, Add fancyBox for media, buttons, thumbs -->
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js"></script>
+<link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+<script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+
+<!-- Optional, Add mousewheel effect -->
+<script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>	
+
+<body>
+
+	<p>Image gallery<br />
+		<a class="fancybox" rel="myGallery" href="images/demo-image.jpg"><img src="images/thumb-image.jpg" /></a>
+		<a class="fancybox" rel="myGallery" href="images/demo-image01.jpg"><img src="images/thumb-image01.jpg" /></a>
+		<a class="fancybox" rel="myGallery" href="images/demo-image02.jpg"><img src="images/thumb-image02.jpg" /></a>
+	</p>
+  
+ 
+<script type="text/javascript">
+$(document).ready(function(){
+		
+	$(".fancybox").fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		iframe : {
+			preload: false
+		}
+	});
+	
+	
+	
+	$(".various").fancybox({
+		maxWidth	: 800,
+		maxHeight	: 600,
+		fitToView	: false,
+		width		: '70%',
+		height		: '70%',
+		autoSize	: false,
+		closeClick	: false,
+		openEffect	: 'none',
+		closeEffect	: 'none'
+	});
+	
+	
+	
+	$('.fancybox-media').fancybox({
+		openEffect  : 'none',
+		closeEffect : 'none',
+		helpers : {
+			media : {}
+		}
+	});
+});
+</script>
+
+</body>
+</html>
