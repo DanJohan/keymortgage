@@ -57,7 +57,7 @@
 	<body class="hold-transition skin-blue sidebar-mini">
 		
 
-		
+		<?php $this->load->view('common/flashmessage'); ?>
 		<div class="wrapper" style="height: auto;">
 			 
 			

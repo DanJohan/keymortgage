@@ -100,7 +100,32 @@ if($cur_tab=='projects'){
               <li id="b_index" class=""><a href="<?= base_url('admin/banks'); ?>"><i class="fa fa-circle-o"></i> View Banks</a></li>
                <li id="b_add" class=""><a href="<?= base_url('admin/banks/add'); ?>"><i class="fa fa-circle-o"></i> Add Banks</a></li>
              </ul>
-          </li>
+        </li>
+
+        <li id="" class="treeview banks">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>Newsfeed</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li id="b_index" class=""><a href="<?= base_url('admin/newsfeed/create'); ?>"><i class="fa fa-circle-o"></i>Send newsfeed</a></li>
+             </ul>
+        </li>
+
+         <li id="" class="treeview banks">
+            <a href="#">
+              <i class="fa fa-dashboard"></i> <span>Notification</span>
+              <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+            </a>
+            <ul class="treeview-menu">
+              <li id="b_index" class=""><a href="<?= base_url('admin/notification/create'); ?>"><i class="fa fa-circle-o"></i>Send notification</a></li>
+             </ul>
+        </li>
+
     </ul>
 
 

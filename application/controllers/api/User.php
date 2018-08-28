@@ -145,15 +145,16 @@ class User extends MY_Controller {
 	public function login() {
 
 
-		$this->form_validation->set_rules('username', 'username or email', 'trim|required');
+		$this->form_validation->set_rules('email', 'email', 'trim|required');
 		$this->form_validation->set_rules('password', 'Password', 'trim|required');
 		if ($this->form_validation->run() == true){
-			$username = $this->input->post('username');
+			$email = $this->input->post('email');
 			$password = $this->input->post('password');
-			$user = $this->UserModel->check_user_exits(array('name'=>$username));
+			$user = $this->UserModel->check_user_exits(array('email'=>$email));
 			if($user){
 				$is_verified = password_verify($password,$user['password']);
 				if($is_verified){
+					unset($user['password']);
 					$response = array('status'=>true,'message'=>'Login successfully','user'=>$user);
 				}else{
 					$response = array('status'=>false,'message'=>'Your password doesn\'t match');

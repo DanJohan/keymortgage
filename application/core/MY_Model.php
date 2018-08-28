@@ -188,6 +188,12 @@ class MY_Model extends CI_Model
                 $this->db->where($key,$value);
             }
         }
+
+        if(array_key_exists("order_by", $params)){
+          foreach ($params['order_by'] as $key => $condition) {
+             $this->db->order_by($condition[0],$condition[1]);
+          }
+        }
         
         //set start and limit
         if(array_key_exists("start",$params) && array_key_exists("limit",$params)){

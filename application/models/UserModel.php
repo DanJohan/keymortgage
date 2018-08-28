@@ -18,8 +18,8 @@ class UserModel extends MY_Model {
 	}
 
 	public function check_user_exits($data = array()) {
-		$this->db->select('id,name,email,user_role,created_at',false);
-		$this->db->where("(name='".$data['name']."' OR email='".$data['name']."')");
+		$this->db->select('id,name,email,,password,user_role,created_at',false);
+		$this->db->where($data);
 		$query=$this->db->get($this->table);
 		$result=$query->row_array();
 		return (!empty($result))?$result:false;

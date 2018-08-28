@@ -324,3 +324,7 @@ label{
 .panel-heading{
 	margin-bottom:10px;
 }
+
+.error{
+    color:red;
+}
