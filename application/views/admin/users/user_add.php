@@ -46,8 +46,20 @@
                   <input type="password" name="password" value="" class="form-control" >
                  <span style="color:#f13005;"><?php echo form_error('password');?></span>
                 </div>
+
            
               </div>
+
+
+             <div class="form-group">
+                <label for="Password" class="col-sm-2 control-label">Phone</label>
+
+                <div class="col-sm-9">
+                  <input type="text" name="phone" value="" class="form-control" >
+                 <span style="color:#f13005;"><?php echo form_error('phone');?></span>
+                </div>
+            </div>   
+            
         	<div class="form-group">
 				   <label for="email" class="col-sm-2 control-label">Profile image</label>
                 <div class="col-sm-9">

@@ -373,8 +373,8 @@ public function  registerDevice() {
 		if ($this->form_validation->run() == true){
 			$user_id = $this->input->post('user_id');
 			$update_data=array(
-		   			'd_device_id'=>$this->input->post('device_id'),
-		   			'd_device_type'=>$this->input->post('device_type')
+		   			'device_id'=>$this->input->post('device_id'),
+		   			'device_type'=>$this->input->post('device_type')
 		   	);
 
 		   	$is_update = $this->UserModel->update($update_data,array('id'=>$user_id));

@@ -61,7 +61,9 @@ if($cur_tab=='notificaiton'){
             </a>
                 <ul class="treeview-menu">
                   <li id="u_index" class=""><a href="<?= base_url('admin/users'); ?>"><i class="fa fa-circle-o"></i>View User</a></li>
+            <li id="u_index" class=""><a href="<?= base_url('admin/staffs'); ?>"><i class="fa fa-circle-o"></i>View Staff</a></li>
     		<li id="u_add" class=""><a href="<?= base_url('admin/users/add'); ?>"><i class="fa fa-circle-o"></i> Add User</a></li>
+
                  </ul>
           </li>
 
