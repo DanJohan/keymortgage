@@ -3,7 +3,7 @@
   <?php $this->load->view('common/flashmessage'); ?>
    <div class="box">
     <div class="box-header project-header">
-      <h3 class="box-title">Staff</h3>
+      <h3 class="box-title">Staff Detail</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -42,6 +42,48 @@
     <!-- /.box-body -->
   </div>
   <!-- /.box -->
+
+
+<!-- uploaded document section -->
+
+<div class="box">
+      <div class="box-header project-header">
+        <h3 class="box-title">Uploaded Document</h3>
+      </div>
+      <div class="box-body">
+            <div class="row">
+          <div class="col-xs-12">
+            <?php 
+          if(!empty($staffDoc))
+          {
+          foreach($staffDoc as  $row)
+            {
+            ?>
+           <!--<img class="photo_img_round" height="150" width="150" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">-->
+        <a class="example-image-link" href="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>" data-lightbox="example-set" data-title="Click the image to move forward.">
+      <img class="photo_img_round example-image" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">
+      
+      </a>
+       
+              <?php
+            }}
+                      ?>
+         
+          </div>
+          
+            </div>
+     
+      </div>
+  </div>
+
+
+<!-- uploaded document section end -->
+
+
+
+
+
+
     <!-- User Document detail start here -->
 <div class="box">
       <div class="box-header project-header">
@@ -83,6 +125,7 @@
      
       </div>
   </div>
+
   <div class="box">
       <div class="box-header project-header">
         <h3 class="box-title">Send Notification</h3>

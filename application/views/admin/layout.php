@@ -22,28 +22,12 @@
 		  <script src="<?= base_url() ?>public/plugins/jQuery/jquery-2.2.3.min.js"></script>
 		  <!-- jQuery UI 1.11.4 -->
 		  <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
-		 
-<!-- fancy box-->
 
-<!-- Add jQuery basic library -->
-<script type="text/javascript" src="<?= base_url() ?>public/jquery-lib.js"></script>
-		
-<!-- Add required fancyBox files -->
-<link rel="stylesheet" href="<?= base_url() ?>public/fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?= base_url() ?>public/fancybox/source/jquery.fancybox.pack.js"></script>
-
-<!-- Optional, Add fancyBox for media, buttons, thumbs -->
-<link rel="stylesheet" href="<?= base_url() ?>public/fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?= base_url() ?>public/fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
-<script type="text/javascript" src="<?= base_url() ?>public/fancybox/source/helpers/jquery.fancybox-media.js"></script>
-<link rel="stylesheet" href="<?= base_url() ?>public/fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
-<script type="text/javascript" src="<?= base_url() ?>public/fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
-
-<!-- Optional, Add mousewheel effect -->
-<script type="text/javascript" src="<?= base_url() ?>public/fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>	
-
-<!--fancy box-->
-
+		  
+<!-- light box-->
+<link rel="stylesheet" href="<?= base_url() ?>public/lightbox2/dist/css/lightbox.min.css" type="text/css" media="screen" />
+<script type="text/javascript" src="<?= base_url() ?>public/lightbox2/dist/js/lightbox-plus-jquery.min.js"></script>	
+<!-- light box-->
 
 		  
 		  <script type="text/javascript">
