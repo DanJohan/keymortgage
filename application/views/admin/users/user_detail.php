@@ -19,12 +19,12 @@
                 <td><b>User Name</b></td>
                 <td><?php echo $user['name']; ?></td>
             </tr>
-			
-			 <tr>
+      
+       <tr>
                 <td><b>First Name</b></td>
                 <td><?php echo $user['first_name']; ?></td>
             </tr>
-			 <tr>
+       <tr>
                 <td><b>Last Name</b></td>
                 <td><?php echo $user['last_name']; ?></td>
             </tr>
@@ -36,7 +36,7 @@
                 <td><b>Phone</b></td>
                 <td><?php echo $user['phone']; ?></td>
             </tr>
-			
+      
         </table>
     </div>
     <!-- /.box-body -->
@@ -50,16 +50,16 @@
             <?php if(!empty($usersProject)) { 
               foreach ($usersProject as $index => $project) {
             ?>
-			  <div class="row">
-					<div class="col-xs-4">
+        <div class="row">
+          <div class="col-xs-4">
               <?php if(!empty($project['project_image'])) { ?>
             <img class="img-thumbnail" style="height:150px;width: 100%;"  src="<?php echo base_url();?>uploads/projects/<?php echo $project['project_image']; ?>" alt="<?php echo $project['name']; ?>">
             <?php } else {?>
             <img src="<?php echo base_url();?>public/images/no-img.jpg" alt="No image" height="150px" width="150px">
            
             <?php } ?>
-					</div>
-					<div class="col-xs-6">
+          </div>
+          <div class="col-xs-6">
               <table class="table table-bordered table-condensed">
                 <!--<tr class="project-header"><td> No.</td><td><?php //echo ($index+1); ?></td></tr>-->
                 <tr><td><b>Project Name: </b></td><td><?php echo $project['name']; ?></td></tr>
@@ -127,15 +127,15 @@
             <!--<table class="table table-bordered table-condensed">
               <tr>
                  </tr>
-			   <tr>
+         <tr>
             <?php if(!empty($usersDoc)) { 
               foreach ($usersDoc as $index => $doc) {
             ?>     
                 <td><?php if(!empty($doc['file'])) { ?>
                   
                   <a class="fancybox" target="_blank" rel="myGallery" href="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>"><img class="img-thumbnail" style="height:150px;width: 200px;"  src="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>" alt="<?php echo $doc['file']; ?>" /></a>
-					  
-					   <?php } else {?>
+            
+             <?php } else {?>
                       <img src="<?php echo base_url();?>public/images/no-img.jpg" alt="No image" height="150px" width="150px">
                      
                       <?php } ?>
@@ -145,7 +145,7 @@
             <?php } }else{ ?>
                 <p>No record found</p>
             <?php } ?>
-			</tr>
+      </tr>
             </table>-->
 
        <di  <div class="row">
@@ -153,14 +153,18 @@
             <?php 
           if(!empty($usersDoc))
           {
-          foreach($usersDoc as  $row)
+          foreach($usersDoc as  $doc)
             {
             ?>
-        <a class="example-image-link" href="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>" data-lightbox="example-set" data-title="Click the image to move forward.">
-      <img class="photo_img_round example-image" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">
+            <?php if(!empty($doc['file'])) { ?>
+        <a class="example-image-link" href="<?= base_url() ?>uploads/documents/<?= $doc['file']; ?>" data-lightbox="example-set" data-title="Click the image to move forward.">
+      <img class="photo_img_round example-image" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $doc['file']; ?>">
       
       </a>
-       
+       <?php } else {?>
+                      <img src="<?php echo base_url();?>public/images/no-img.jpg" alt="No image" height="150px" width="150px">
+                     
+                      <?php } ?>
            <?php } }else{ ?>
                 <p>No record found</p>
             <?php } ?>
