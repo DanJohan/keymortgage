@@ -124,36 +124,51 @@
         <h3 class="box-title">User Document detail</h3>
       </div>
       <div class="box-body">
-            <table class="table table-bordered table-condensed">
+            <!--<table class="table table-bordered table-condensed">
               <tr>
-              <!--  <th>S.NO</th>
-                <th>Document File</th>
-               <th>Actions</th>-->
-              </tr>
+                 </tr>
 			   <tr>
             <?php if(!empty($usersDoc)) { 
               foreach ($usersDoc as $index => $doc) {
             ?>     
-               
-                    <!--<td><?php //echo $index+1; ?></td>-->
-                    <td><?php if(!empty($doc['file'])) { ?>
-                      <!--<img class="img-thumbnail" style="height:150px;width: 200px;"  src="<?php //echo base_url();?>uploads/documents/<?php //echo $doc['file']; ?>" alt="<?php //echo $doc['file']; ?>" id="myImg">-->
-
-                      <a class="fancybox" target="_blank" rel="myGallery" href="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>"><img class="img-thumbnail" style="height:150px;width: 200px;"  src="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>" alt="<?php echo $doc['file']; ?>" /></a>
+                <td><?php if(!empty($doc['file'])) { ?>
+                  
+                  <a class="fancybox" target="_blank" rel="myGallery" href="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>"><img class="img-thumbnail" style="height:150px;width: 200px;"  src="<?php echo base_url();?>uploads/documents/<?php echo $doc['file']; ?>" alt="<?php echo $doc['file']; ?>" /></a>
 					  
 					   <?php } else {?>
                       <img src="<?php echo base_url();?>public/images/no-img.jpg" alt="No image" height="150px" width="150px">
                      
                       <?php } ?>
                       </td>
-                    <!--<td><button class="btn btn-primary send-message" data-user-id="<?php //echo $doc['user_id']; ?>">Send Message</button></td>-->
-                
+                            
                
             <?php } }else{ ?>
                 <p>No record found</p>
             <?php } ?>
 			</tr>
-            </table>
+            </table>-->
+
+       <di  <div class="row">
+          <div class="col-xs-12">
+            <?php 
+          if(!empty($usersDoc))
+          {
+          foreach($usersDoc as  $row)
+            {
+            ?>
+        <a class="example-image-link" href="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>" data-lightbox="example-set" data-title="Click the image to move forward.">
+      <img class="photo_img_round example-image" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">
+      
+      </a>
+       
+           <?php } }else{ ?>
+                <p>No record found</p>
+            <?php } ?>
+         
+          </div>
+          
+
+             
      
       </div>
   </div>
