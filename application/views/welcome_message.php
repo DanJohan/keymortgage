@@ -66,10 +66,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-
+<form action="http://keymortgage.co/app/api/document/docUpload" method="post" enctype="multipart/form-data">
+		<input type="file" name="doc_images[]" multiple="multiple">
+		<button type="submit" name="submit">Submit</button>
+</form>
 <div id="container">
 	<h1>Welcome to CodeIgniter!</h1>
-
+	
 	<div id="body">
 		<p>The page you are looking at is being generated dynamically by CodeIgniter.</p>
 

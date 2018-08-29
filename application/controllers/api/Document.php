@@ -12,6 +12,7 @@
  
 			
 		public function docUpload(){
+
 			$this->form_validation->set_rules('user_id', 'User id', 'trim|required');
 			if ($this->form_validation->run() == true){
 
@@ -48,7 +49,7 @@
 					$this->DocumentModel->insert_batch($files_data);
 					$documents = $this->DocumentModel->getDocumentByUserId($user_id);
 
-					if($documents) {
+					if(!empty($documents)) {
 						$response = array('status'=>true,'message'=>'Record inserted successfully','data'=>$documents);
 					}else{
 						$response = array('status'=>false,'message'=>'Somthing went wrong!');
