@@ -114,7 +114,7 @@
         
         </div>
   </div>
-    <tr><td><a href="<?php echo base_url(); ?>admin/users" class="btn btn-primary bg-blue pull-right ">Go Back</a></td></tr>
+    <tr><td><a href="<?php echo base_url(); ?>admin/staffs" class="btn btn-primary bg-blue pull-right ">Go Back</a></td></tr>
 
 <!-- Send notification-->
 </section>
