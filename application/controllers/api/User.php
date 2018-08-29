@@ -393,21 +393,22 @@ public function  registerDevice() {
 
 
 // Get All users
-
 public function getUsers() {
 
-			//$criteria['field']="id,email,name,first_name,last_name,phone";
-			//$criteria['returnType']="single";
-			//$users = $this->UserModel->search($criteria);
-	        $users = $this->UserModel->getAllUsers();
-
-			if(!empty($users)) {
-				$response = array('status'=>true,'message'=>'Detail found successfully!','data'=>$users);
-			}else{
-				$response= array('status'=>false,'message'=>'Not detail found!');
-			}
-			
+		$users = $this->UserModel->getAllUsers();
+			foreach ($users as &$user) {
 		
+				$image_path = base_url().'uploads/admin/';
+				if(empty($user['profile_image']))
+				{
+					$user['profile_image'] ="";
+				}
+				else
+				{
+					$user['profile_image'] = $image_path.$user['profile_image'];
+				}
+				$response = array('status'=>true,'message'=>'Record found successfully', 'users_detail'=>$users);
+    		}
 		$this->renderJson($response);
 	}//Get All users
 
