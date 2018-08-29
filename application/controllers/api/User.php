@@ -392,4 +392,24 @@ public function  registerDevice() {
 //Device register
 
 
+// Get All users
+
+public function getUsers() {
+
+			//$criteria['field']="id,email,name,first_name,last_name,phone";
+			//$criteria['returnType']="single";
+			//$users = $this->UserModel->search($criteria);
+	        $users = $this->UserModel->getAllUsers();
+
+			if(!empty($users)) {
+				$response = array('status'=>true,'message'=>'Detail found successfully!','data'=>$users);
+			}else{
+				$response= array('status'=>false,'message'=>'Not detail found!');
+			}
+			
+		
+		$this->renderJson($response);
+	}//Get All users
+
+
 }// end of class
