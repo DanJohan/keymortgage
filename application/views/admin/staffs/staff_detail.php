@@ -54,9 +54,9 @@
             <div class="row">
           <div class="col-xs-12">
             <?php 
-          if(!empty($usersDoc))
+          if(!empty($staffDoc))
           {
-          foreach($usersDoc as  $row)
+          foreach($staffDoc as  $row)
             {
             ?>
            <!--<img class="photo_img_round" height="150" width="150" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">-->

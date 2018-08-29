@@ -144,9 +144,9 @@
 			$criteria['returnType'] = 'single';
 			$data['staff'] =  $this->UserModel->search($criteria);
 			//dd($data['sfaff']);
-			$data['usersProject'] = $this->UserProjectModel->getProjectByUserId($id);
-			$data['usersBank'] = $this->UserBankModel->getBankByUserId($id);
-			$data['usersDoc'] = $this->DocumentModel->getUserDocumentById($id);
+			//$data['usersProject'] = $this->UserProjectModel->getProjectByUserId($id);
+			//$data['usersBank'] = $this->UserBankModel->getBankByUserId($id);
+			$data['staffDoc'] = $this->DocumentModel->getUserDocumentById($id);
 
 			//dd($data['usersDoc']);die;
 			$data['pageTitle']= "Staff Profile";
