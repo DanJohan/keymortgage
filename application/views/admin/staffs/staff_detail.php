@@ -61,7 +61,7 @@
             ?>
            <!--<img class="photo_img_round" height="150" width="150" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">-->
         <a class="example-image-link" href="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>" data-lightbox="example-set" data-title="Click the image to move forward.">
-      <img class="photo_img_round example-image" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">
+      <img class="photo_img_round img-thumbnail" height="200" width="200" src="<?= base_url() ?>uploads/documents/<?= $row['file']; ?>">
       
       </a>
        
@@ -92,7 +92,7 @@
       <div class="box-body">
             <div class="row">
           <div class="col-xs-12">
-                  <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/staffs/sendDocument" enctype= "multipart/form-data">
+                  <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/staffs/sendDocument" enctype= "multipart/form-data" id="document_attach">
   <input type="hidden" name="user_id" value="<?php echo $staff['id']; ?>">
                  <div class="form-group">
             <label class="control-label col-sm-2" for="email">Document:</label>
@@ -134,7 +134,7 @@
       <div class="box-body">
             <div class="row">
           <div class="col-xs-12">
-            <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/staffs/sendDocumentNotification">
+            <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/staffs/sendDocumentNotification" id="notification">
   <input type="hidden" name="user_id" value="<?php echo $staff['id']; ?>">
                  <div class="form-group">
             <label class="control-label col-sm-2" for="email">Message:</label>
@@ -157,6 +157,33 @@
         
         </div>
   </div>
+
+
+<div class="box">
+      <div class="box-header project-header">
+        <h3 class="box-title">Discussed Enquiry</h3>
+      </div>
+       <div class="box-body">
+            <div class="row">
+          <div class="col-xs-12">
+          <table>
+            <tr><td>Message Title</td></tr>
+           <?php if(!empty($staffEnq)) 
+            {
+                foreach($staffEnq as $data)
+              ?>
+                 <tr><td><?php echo $data['message']; ?></td></tr>
+
+         <?php } ?>
+         </table>
+          </div>
+          
+            </div>
+          
+        
+        </div>
+  </div>
+
     <tr><td><a href="<?php echo base_url(); ?>admin/staffs" class="btn btn-primary bg-blue pull-right ">Go Back</a></td></tr>
 
 <!-- Send notification-->
@@ -200,4 +227,28 @@
         });
       }
   }); */
+</script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>public/dist/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+  $( "#document_attach" ).validate({
+    errorClass: "error",
+    rules: {
+       message:{
+        required: true
+      }
+     
+    }
+});
+</script>
+
+<script type="text/javascript">
+  $( "#notification" ).validate({
+    errorClass: "error",
+    rules: {
+       message:{
+        required: true
+      }
+    }
+});
 </script>

@@ -147,8 +147,9 @@
 			//$data['usersProject'] = $this->UserProjectModel->getProjectByUserId($id);
 			//$data['usersBank'] = $this->UserBankModel->getBankByUserId($id);
 			$data['staffDoc'] = $this->DocumentModel->getUserDocumentById($id);
-
-			//dd($data['usersDoc']);die;
+			$data['staffEnq'] = $this->StaffEnquiryModel->getEnquiryByUserId($id);
+			//echo $this->db->last_query();die;
+			//dd($data['StaffEnq']);
 			$data['pageTitle']= "Staff Profile";
 			$data['view'] = 'admin/staffs/staff_detail';
 			$this->load->view('admin/layout',$data);
