@@ -41,6 +41,22 @@
      	$this->renderJson($response);
 	}
 
+     public function updateEnquiryStatus(){
+          $this->form_validation->set_rules('enquiry_id', 'enquiry_id', 'trim|required');
+          $this->form_validation->set_rules('status','Status','trim|required');
+          if ($this->form_validation->run() == true){
+               $enquiry_id = $this->input->post('enquiry_id');
+               $status = $this->input->post('status');
+               $this->StaffEnquiryModel->update(array('status'=>$status),array('id'=>$enquiry_id));
+               $response = array('status'=>true,'message'=>'Record updated successfully!');
+          }else{
+              $errors = $this->form_validation->error_array();
+               $response = array('status'=>false,'message'=>$errors); 
+          }
+
+          $this->renderJson($response);
+     }
+
 }
 ?>
 

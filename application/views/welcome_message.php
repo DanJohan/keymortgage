@@ -66,7 +66,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	</style>
 </head>
 <body>
-<form action="http://keymortgage.co/app/api/document/docUpload" method="post" enctype="multipart/form-data">
+<form action="http://keymortgage.co/testupload/test.php" method="post" enctype="multipart/form-data">
 		<input type="file" name="doc_images[]" multiple="multiple">
 		<button type="submit" name="submit">Submit</button>
 </form>
