@@ -184,7 +184,7 @@
       <div class="box-body">
             <div class="row">
           <div class="col-xs-12">
-                  <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/users/sendDocumentNotification">
+                  <form class="form-horizontal" method="post" action="<?php echo base_url(); ?>admin/users/sendDocumentNotification" id="user_notification">
   <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
                  <div class="form-group">
             <label class="control-label col-sm-2" for="email">Message:</label>
@@ -250,4 +250,17 @@
         });
       }
   }); */
+</script>
+
+<script type="text/javascript" src="<?php echo base_url(); ?>public/dist/js/jquery.validate.min.js"></script>
+<script type="text/javascript">
+  $( "#user_notification" ).validate({
+    errorClass: "error",
+    rules: {
+     
+      message:{
+        required: true
+      }
+    }
+});
 </script>
